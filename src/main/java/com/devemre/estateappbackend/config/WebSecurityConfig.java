@@ -17,6 +17,7 @@ public class WebSecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests((requests) -> requests
                     .requestMatchers("/estates","/estates/**").hasRole("ADMIN")
+                    .requestMatchers("/auth/**").permitAll()
                     .anyRequest().authenticated()
             )
             .httpBasic(Customizer.withDefaults());
